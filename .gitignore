@@ -4,7 +4,6 @@ package-lock.json
 launch.json
 settings.json
 FONT/
-<<<<<<< HEAD
 fontpython/experiments
 *.pyc
 *.gif
@@ -16,16 +15,3 @@ fontpython/data/package
 fontpython/data/pair
 fontpython/data/experiment_0_batch_16
 test_env.zip
-<<<<<<< HEAD
-=======
-*.png
-fontpython/experiments
-*.pyc
-fontpython/data
-*.gif
-*.sh
-baseline_checkpoint/
-*.ini
->>>>>>> 153cada270f50fc1230aea0cbaa8781288294c90
-=======
->>>>>>> main
