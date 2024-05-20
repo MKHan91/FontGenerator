@@ -9,14 +9,14 @@ var svg2ttf = require('svg2ttf');
 var svgicons2svgfont = require('svgicons2svgfont');
 
 var fontStream = new svgicons2svgfont({
-    fontName: 'YKMfont'
+    fontName: '나눔고딕손글씨체 임시'
 })
 
 var PNG = require('pngjs').PNG;
 
 // var dir_name = 'FONT/inferred_result'
 // var folderName = 'exp0_b8'
-var dir_name = 'FONT/experiment_8_batch_16'
+var dir_name = 'FONT/experiment_7_batch_16'
 // var dir_name = +new Date()
 
 var img_dir = `./${dir_name}`
@@ -84,7 +84,7 @@ const app = async function generate() {
     // Font stream handling
     fontStream.pipe(fs.createWriteStream(`${svg_fonts_dir}/font_ss.svg`))
         .on('finish', function() {
-            const ttf = svg2ttf(fs.readFileSync(`${svg_fonts_dir}/font_ss.svg`, 'utf8'), {fontHeight: 5000, normalize: true});
+            const ttf = svg2ttf(fs.readFileSync(`${svg_fonts_dir}/font_ss.svg`, 'utf8'), {fontHeight: 1000, normalize: true});
             fs.writeFileSync(`${ttf_dir}/FONT.ttf`, Buffer.from(ttf.buffer));
         })
         .on('error', function(err) {
@@ -93,10 +93,12 @@ const app = async function generate() {
 
     // Writing glyphs to the font stream
     sources.forEach((source, i) => {
-        const glyph = fs.createReadStream(`${svg_dir}/${fileName[i]}.svg`);
+        // const glyph = fs.createReadStream(`${svg_dir}/${fileName[i]}.svg`);
+        let glyph = fs.createReadStream(`${svg_dir}/${fileName[i]}.svg`);
         glyph.metadata = {
             unicode: [String.fromCharCode(parseInt(source, 16))],
-            name: 'uni' + source
+            // name: 'uni' + source
+            name: 'glyph' + source
         };
         fontStream.write(glyph);
     });
