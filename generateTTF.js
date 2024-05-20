@@ -18,7 +18,7 @@ var PNG = require('pngjs').PNG;
 
 // var dir_name = 'FONT/inferred_result'
 // var folderName = 'exp0_b8'
-var dir_name = 'FONT/experiment_7_batch_16'
+var dir_name = 'FONT/experiment_8_batch_16'
 // var dir_name = +new Date()z
 
 var img_dir = `./${dir_name}`

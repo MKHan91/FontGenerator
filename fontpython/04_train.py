@@ -13,24 +13,24 @@ parser = argparse.ArgumentParser(description='Train')
 # Data
 parser.add_argument('--experiment_dir',     dest='experiment_dir',      type=str,       default=osp.join(os.getcwd(), 'fontpython', 'experiments'),
                     help='experiment directory, data, samples,checkpoints,etc')
-parser.add_argument('--experiment_id',      dest='experiment_id',       type=int,       default=8,      help='sequence id for the experiments you prepare to run')
+parser.add_argument('--experiment_id',      dest='experiment_id',       type=int,       default=9,      help='sequence id for the experiments you prepare to run')
 
 
 # Training
 parser.add_argument('--image_size',         dest='image_size',          type=int,       default=128,    help="size of your input and output image")
-parser.add_argument('--epoch',              dest='epoch',               type=int,       default=160,     help='number of epoch')
-# parser.add_argument('--epoch',              dest='epoch',               type=int,       default=100,     help='number of epoch')
+# parser.add_argument('--epoch',              dest='epoch',               type=int,       default=160,     help='number of epoch')
+parser.add_argument('--epoch',              dest='epoch',               type=int,       default=120,     help='number of epoch')
 parser.add_argument('--batch_size',         dest='batch_size',          type=int,       default=16,     help='number of examples in batch')
 parser.add_argument('--lr',                 dest='lr',                  type=float,     default=0.001,  help='initial learning rate for adam')
-parser.add_argument('--schedule',           dest='schedule',            type=int,       default=40,     help='number of epochs to half learning rate')
-# parser.add_argument('--schedule',           dest='schedule',            type=int,       default=20,     help='number of epochs to half learning rate')
+# parser.add_argument('--schedule',           dest='schedule',            type=int,       default=40,     help='number of epochs to half learning rate')
+parser.add_argument('--schedule',           dest='schedule',            type=int,       default=20,     help='number of epochs to half learning rate')
 parser.add_argument('--resume',             dest='resume',              type=int,       default=1,      help='resume from previous training')
 
 # Hyper-parameter
-parser.add_argument('--L1_penalty',         dest='L1_penalty',          type=int,       default=500,    help='weight for L1 loss')
-# parser.add_argument('--L1_penalty',         dest='L1_penalty',          type=int,       default=100,    help='weight for L1 loss')
-parser.add_argument('--Lconst_penalty',     dest='Lconst_penalty',      type=int,       default=1000,     help='weight for const loss')
-# parser.add_argument('--Lconst_penalty',     dest='Lconst_penalty',      type=int,       default=15,     help='weight for const loss')
+# parser.add_argument('--L1_penalty',         dest='L1_penalty',          type=int,       default=500,    help='weight for L1 loss')
+parser.add_argument('--L1_penalty',         dest='L1_penalty',          type=int,       default=100,    help='weight for L1 loss')
+# parser.add_argument('--Lconst_penalty',     dest='Lconst_penalty',      type=int,       default=1000,     help='weight for const loss')
+parser.add_argument('--Lconst_penalty',     dest='Lconst_penalty',      type=int,       default=15,     help='weight for const loss')
 parser.add_argument('--Ltv_penalty',        dest='Ltv_penalty',         type=float,     default=0.0,    help='weight for tv loss')
 parser.add_argument('--Lcategory_penalty',  dest='Lcategory_penalty',   type=float,     default=1.0,    help='weight for category loss')
 parser.add_argument('--embedding_num',      dest='embedding_num',       type=int,       default=40,     help="number for distinct embeddings")
