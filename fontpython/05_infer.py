@@ -14,7 +14,7 @@ People are made to have fun and be 中二 sometimes
 """
 
 parser = argparse.ArgumentParser(description='Inference for unseen data')
-parser.add_argument('--model_dir',      dest='model_dir',       type=str,            default=r'/home/dev/fontpython/experiments/checkpoint/experiment_9_batch_16',
+parser.add_argument('--model_dir',      dest='model_dir',       type=str,            default=r'/home/dev/fontpython/experiments/checkpoint/experiment_11_batch_16',
                     help='directory that saves the model checkpoints')
 parser.add_argument('--batch_size',     dest='batch_size',      type=int,            default=1, 
                     help='number of examples in batch')
@@ -22,7 +22,7 @@ parser.add_argument('--source_obj',     dest='source_obj',      type=str,       
                     help='the source images for inference')
 parser.add_argument('--embedding_ids',                          type=str,            default='0',
                     help='embeddings involved')
-parser.add_argument('--save_dir',                               type=str,            default=r'/home/dev/FONT/experiment_9_batch_16/inferred_result',
+parser.add_argument('--save_dir',                               type=str,            default=r'/home/dev/FONT/experiment_11_batch_16/inferred_result',
                     help='path to save inferred images')
 parser.add_argument('--inst_norm',      dest='inst_norm',       type=int,            default=0,
                     help='use conditional instance normalization in your model')
@@ -38,7 +38,7 @@ parser.add_argument('--compare',        dest='compare',         type=int,       
                     help='Compare with original font image')
 parser.add_argument('--show_ssim',      dest='show_ssim',       type=int,            default=0, 
                     help='Visualize ssim in the result image')
-parser.add_argument('--progress_file',  dest='progress_file',   type=str,            default=r'/home/dev/fontpython/experiments/logs/experiment_9_batch_16/progress', 
+parser.add_argument('--progress_file',  dest='progress_file',   type=str,            default=r'/home/dev/fontpython/experiments/logs/experiment_11_batch_16/progress', 
                     help='Progress file name. Not used with compare')
 args = parser.parse_args()
 

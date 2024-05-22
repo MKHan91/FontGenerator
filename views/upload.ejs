@@ -76,13 +76,13 @@
         $(document).ready(function() {
             $('#uploadForm').on('submit',function(e) {
               e.preventDefault(); // 현재 이벤트의 기본 동작을 중단한다.
-  
+
             //   var startTrain = $(this).serialize();
-  
-              $('.loader').css({'display': 'inline-block'})
-              $('#upload-btn').css({'display': 'none'})
+
+            $('.loader').css({'display': 'inline-block'})
+            $('#upload-btn').css({'display': 'none'})
               // Begin uploading (this will start entire training)
-              
+            
             $(this).ajaxSubmit({
                 url:'/progress', 
                 type:"POST",
@@ -98,8 +98,8 @@
                 }
             });
             return false;
-          });
         });
-      </script>
+    });
+    </script>
 </body>
 </html>

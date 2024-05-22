@@ -40,6 +40,9 @@ gracefulFs.gracefulify(fs);
 router.post('/', (req, res) => {
     // const startTrain = req.body.startTrain;
 
+    const exp_number = 10
+    const exp_foldr = `experiment_${exp_number}_batch_16`
+
     //start
     let doing_training = false;
     let training_progress = [];
@@ -61,7 +64,7 @@ router.post('/', (req, res) => {
     const model_dir = exp_dir + '/checkpoint';
     const logs_dir = exp_dir + '/logs'
     // const result_dir = exp_dir + '/result';
-    const result_dir = '/home/dev/FONT/experiment_9_batch_16';
+    const result_dir = `/home/dev/FONT/${exp_foldr}`;
 
     const svg_dir = result_dir + '/svg'
     const svg_fonts_dir = result_dir + '/svg_fonts'
@@ -75,9 +78,9 @@ router.post('/', (req, res) => {
         fs.mkdirSync(scan_dir)
     }
     
-    // if (!fs.existsSync(result_dir)){
-    //     fs.mkdirSync(result_dir)
-    // }
+    if (!fs.existsSync(result_dir)){
+        fs.mkdirSync(result_dir)
+    }
     
     if (!fs.existsSync(svg_dir)) {
         fs.mkdirSync(svg_dir)
@@ -121,21 +124,22 @@ router.post('/', (req, res) => {
     training_progress.push("data compressed");
     console.log('Loading File .... /home/dev/fontpython/03_package.py');
     
-    execSync(`python /home/dev/fontpython/04_train.py --experiment_dir=${exp_dir} --experiment_id=9 --batch_size=16 --lr=0.001 --epoch=40 --sample_steps=100 --schedule=20 --L1_penalty=100 --Lconst_penalty=15 --freeze_encoder=1`);
+    execSync(`python /home/dev/fontpython/04_train.py --experiment_dir=${exp_dir} --experiment_id=${exp_number} --batch_size=16 --lr=0.001 --epoch=40 --sample_steps=100 --schedule=20 --L1_penalty=100 --Lconst_penalty=15 --freeze_encoder=1`);
     training_progress.push("first trained");
     console.log('/Loading File.... /home/dev/fontpython/04_train.py');
     
-    execSync(`python /home/dev/fontpython/04_train.py --experiment_dir=${exp_dir} --experiment_id=9 --batch_size=16 --lr=0.001 --epoch=120 --sample_steps=100 --schedule=40 --L1_penalty=500 --Lconst_penalty=1000 --freeze_encoder=1`);
+    execSync(`python /home/dev/fontpython/04_train.py --experiment_dir=${exp_dir} --experiment_id=${exp_number} --batch_size=16 --lr=0.001 --epoch=120 --sample_steps=100 --schedule=40 --L1_penalty=500 --Lconst_penalty=1000 --freeze_encoder=1`);
     training_progress.push("secondPhaseTrained");
 
     console.log('----------------------------------------------------'+model_dir)
-    execSync(`python /home/dev/fontpython/05_infer.py --model_dir=${model_dir}/experiment_9_batch_16 --batch_size=1 --source_obj=${root_dir}/package/val.obj --embedding_ids=0 --save_dir=${result_dir}/inferred_result --progress_file=${logs_dir}/experiment_9_batch_16/progress`);
+    // execSync(`python /home/dev/fontpython/05_infer.py --model_dir=${model_dir}/experiment_9_batch_16 --batch_size=1 --source_obj=${root_dir}/package/val.obj --embedding_ids=0 --save_dir=${result_dir}/inferred_result --progress_file=${logs_dir}/experiment_9_batch_16/progress`);
+    execSync(`python /home/dev/fontpython/05_infer.py --model_dir=${model_dir}/${exp_foldr} --batch_size=1 --source_obj=${root_dir}/package/val.obj --embedding_ids=0 --save_dir=${result_dir}/inferred_result --progress_file=${logs_dir}/${exp_foldr}/progress`);
     training_progress.push("Inference");
     
 
     var sources = [];
     var fileName = [];
-    const files = fs.readdirSync(`${result_dir}`);
+    const files = fs.readdirSync(`${result_dir}/inferred_result`);
 
 
     for (var i = 0; i < files.length; i++) {
@@ -146,8 +150,10 @@ router.post('/', (req, res) => {
     // png to svg
     for (var i = 0; i < files.length; i++) {
         let j = i;
-
-        var data = fs.readFileSync(`${result_dir}/inferred_` + fileName[j] + '.png');
+        
+        console.log(fileName[j])
+        // var data = fs.readFileSync(`${result_dir}/inferred_` + fileName[j] + '.png');
+        var data = fs.readFileSync(`${result_dir}/inferred_result/inferred_` + fileName[j] + '.png');
 
         var png = PNG.sync.read(data);
 
