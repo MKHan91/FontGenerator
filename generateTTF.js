@@ -9,14 +9,14 @@ var svg2ttf = require('svg2ttf');
 var svgicons2svgfont = require('svgicons2svgfont');
 
 var fontStream = new svgicons2svgfont({
-    fontName: '나눔고딕손글씨체 임시'
+    fontName: '윤경민 글씨체'
 })
 
 var PNG = require('pngjs').PNG;
 
 // var dir_name = 'FONT/inferred_result'
 // var folderName = 'exp0_b8'
-var dir_name = 'FONT/experiment_11_batch_16'
+var dir_name = 'FONT/experiment_1_batch_16'
 // var dir_name = +new Date()
 
 var img_dir = `./${dir_name}`

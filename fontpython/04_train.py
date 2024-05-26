@@ -13,13 +13,13 @@ parser = argparse.ArgumentParser(description='Train')
 # Data
 parser.add_argument('--experiment_dir',     dest='experiment_dir',      type=str,       default=osp.join(os.getcwd(), 'fontpython', 'experiments'),
                     help='experiment directory, data, samples,checkpoints,etc')
-parser.add_argument('--experiment_id',      dest='experiment_id',       type=int,       default=11,      help='sequence id for the experiments you prepare to run')
+parser.add_argument('--experiment_id',      dest='experiment_id',       type=int,       default=1,      help='sequence id for the experiments you prepare to run')
 
 
 # Training
 parser.add_argument('--image_size',         dest='image_size',          type=int,       default=128,    help="size of your input and output image")
-parser.add_argument('--epoch',              dest='epoch',               type=int,       default=160,     help='number of epoch')
-# parser.add_argument('--epoch',              dest='epoch',               type=int,       default=100,     help='number of epoch')
+parser.add_argument('--epoch',              dest='epoch',               type=int,       default=100,     help='number of epoch')
+# parser.add_argument('--epoch',              dest='epoch',               type=int,       default=60,     help='number of epoch')
 parser.add_argument('--batch_size',         dest='batch_size',          type=int,       default=16,     help='number of examples in batch')
 parser.add_argument('--lr',                 dest='lr',                  type=float,     default=0.001,  help='initial learning rate for adam')
 parser.add_argument('--schedule',           dest='schedule',            type=int,       default=40,     help='number of epochs to half learning rate')
@@ -44,7 +44,7 @@ parser.add_argument('--sample_steps',       dest='sample_steps',        type=int
 parser.add_argument('--checkpoint_steps',   dest='checkpoint_steps',    type=int,       default=500,
                     help='number of batches in between two checkpoints')
 parser.add_argument('--flip_labels',        dest='flip_labels',         type=int,       default=0,
-                    help='whether flip training data labels or not, in fine tuning')
+                    help='whether flip training data labels or not, in fine tuning')    
 parser.add_argument('--no_val',             dest='no_val',              type=int,       default=None,
                     help='no validation set is given')
 args = parser.parse_args()

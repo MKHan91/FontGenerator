@@ -111,8 +111,8 @@ def crop_image_uniform(src_dir, dst_dir, unicode_txt):
                 _roi = gray[y+margin : y+h-margin , x+margin : x+w-margin]
                 # _roi = thresh[y+margin : y+h-margin , x+margin : x+w-margin]
                 
-                # cropped_image = _roi[_y:_y+_h, _x:_x+_w]
-                cropped_image = _roi
+                cropped_image = _roi[_y:_y+_h, _x:_x+_w]
+                # cropped_image = _roi
                 # cv2.imshow('_roi', _roi)
                 # cv2.waitKey(0)
 

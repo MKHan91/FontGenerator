@@ -40,7 +40,7 @@ gracefulFs.gracefulify(fs);
 router.post('/', (req, res) => {
     // const startTrain = req.body.startTrain;
 
-    const exp_number = 10
+    const exp_number = 1
     const exp_foldr = `experiment_${exp_number}_batch_16`
 
     //start

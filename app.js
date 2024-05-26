@@ -20,8 +20,8 @@ app.set('port', process.env.PORT || 8081);
 // 미들웨어 등록
 app.use(morgan('dev')); // logging
 // app.use(express.static(path.join(__dirname, 'public'))); 
-app.use(express.static(path.join(__dirname, 'public'))); 
-console.log(__dirname)
+app.use(express.static(path.join(__dirname, 'public')));
+
 // app.use(express.static(path.join(__dirname, 'font_python'))); 
 // app.use(express.static(path.join(__dirname, 'fontpython'))); 
 

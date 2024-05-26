@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 
 router.get('/download', (req, res) => {
     // res.download('/home/dev/public/myfont.ttf');
-    res.download('/home/dev/FONT/experiment_10_batch_16/ttf_fonts/myfont.ttf');
+    res.download('/home/dev/FONT/experiment_1_batch_16/ttf_fonts/myfont.ttf');
 });
 
 module.exports = router;
