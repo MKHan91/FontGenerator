@@ -14,11 +14,14 @@ const app = express();
 // 서버 세팅 설정
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.set('port', process.env.PORT || 8080);
+// app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 8081);
 
 // 미들웨어 등록
 app.use(morgan('dev')); // logging
-app.use(express.static(path.join(__dirname, 'public'))); 
+// app.use(express.static(path.join(__dirname, 'public'))); 
+app.use(express.static(path.join(__dirname, 'public')));
+
 // app.use(express.static(path.join(__dirname, 'font_python'))); 
 // app.use(express.static(path.join(__dirname, 'fontpython'))); 
 
@@ -28,7 +31,6 @@ app.use('/', indexRouter);
 app.use('/upload', uploadRouter);
 app.use('/progress', progressRouter);
 
-app.use('/template', express.static(path.join(__dirname, 'public/template')));
 
 // 404 에러 처리
 app.use((req, res, next) => {

@@ -1,20 +1,29 @@
-
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-	<meta charset="UTF-8">
-	<title>Simple Contact Us form</title>
-	<link rel="stylesheet" href="./css/styles.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-</head>
-<body>  
-    <form class="form" action="/progress" method="POST">
-        <div class="upload-back">
-            <div class="title">
-                <h1>폰트 생성 완료</h1>
-            </div>
 
-            <a class ="down" href="/download" download>다운 받기</a>
-    </form>
+<head>
+    <meta charset="UTF-8">
+    <title>Font Generator</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <style>
+        h3 {
+            font-size: 4em;
+            margin-top: -150px; /* 여기서 위쪽 여백 조정 */
+        }
+    </style>
+</head>
+
+<body>
+     <!-- ======= Hero Section ======= -->
+     <section id="hero">
+        <div class="hero-container">
+          <h3 style="font-size: 4em;">Font <strong>Generated</strong></h3>
+          <div class="container" style="padding-top: 20px">
+            <a class="down" href="/download" download>Download TTF</a>
+        </div>
+        </div>
+    </section><!-- End Hero -->
 </body>
+
 </html>

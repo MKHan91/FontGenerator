@@ -1,29 +1,115 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Simple Contact Us form</title>
-	<link rel="stylesheet" href="./css/styles.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <meta charset="UTF-8">
+    <title>Font Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
+
 <body>
-    <!-- 폼은 데이터를 서버의 "/upload" 엔드포인트로 제출할 것 -->
-    <form class="form" action="/upload" method="POST" enctype="multipart/form-data">
-        <div class="index-back">
-            <div class="title">
-                <h1>템플릿 업로드</h1>
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="">Kanglab</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <h3>Welcome to <strong>Font Generator</strong></h3>
+      <h1>글씨체를 활용한 웹 기반 폰트 생성기</h1>
+      <h2>Web-based font generator using handwriting</h2>
+      <form class="form" action="/upload" method="POST" enctype="multipart/form-data">
+
+          <div class="form-items">
+            <div class="input">
+              <!-- input[type="file"] 대신 레이블 사용 -->
+              <label for="file-upload" class="custom-file-upload">File Select</label>
+              <input id="file-upload" type="file" name="templateImage" multiple>
             </div>
-            
-            <div class="form-items">
-                <div class= "input">
-                    <input type="file" name="templateImage" multiple>        
-                </div>
-            </div>
-            
-            <div>
-                <input class ="btn" type="submit" value="업로드">
-            </div>
+          </div>
+
+          <div>
+            <input class="btn" type="submit" value="Upload">
+          </div>
         </div>
-    </form>
+      </form>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>About</h2>
+          <h3>About <span>Web-based font generator using handwriting</span></h3>
+          <p style="text-align: left; width: 80%; margin: 20px auto;">Font Generator는 무료 폰트를 잘못 사용하였다가 발생하는 저작권 문제를 해결하고 사용자가 본인의  글씨체를 콘텐츠에 활용할 수 있도록 하기 위해 제작되었습니다. 이를 통해 사용자는 본인만의 개성을 담은 글씨체를 활용할 수 있는 기회를 제공받게 되고 또, 무료 폰트의 저작권 문제를 해결할 수 있습니다. 저희는 이 작품을 통해 사용자가 폰트 사용에 있어 자유로움을 느끼고 좀 더 다양한 곳에 본인의 글씨체를 사용할 수 있는 것을 목표로 하고 있습니다.</p>
+        </div>
+        <div class="container">
+          <div class="section-title">
+            <h4 style="color: #222222; margin-bottom: 20px; font-weight: bold;"> <span>How To Use</span></h4>
+            <ul style="text-align: left;">
+              <li style="font-size: 18px; list-style: none;"> 
+                <span class="ri ri-check-double-line" style="margin-right: 150px;"></span> <span style="font-weight: bold;">1. 아래 템플릿 다운로드 버튼을 클릭 후 템플릿을 다운받아 손글씨를 작성합니다.</span>
+              </li>
+              <li style="font-size: 18px; list-style: none;">
+                <span class="ri ri-check-double-line" style="margin-right: 150px;"></span> <span style="font-weight: bold;">2. File Select 버튼을 클릭 후 작성한 템플릿을 업로드합니다.</span>
+              </li>
+              <li style="font-size: 18px; list-style: none;">
+                <span class="ri ri-check-double-line" style="margin-right: 150px;"></span> <span style="font-weight: bold;">3. Upload가 완료되면 Start 버튼을 클릭하여 학습을 시작합니다.</span>
+              </li>
+              <li style="font-size: 18px; list-style: none;">
+                <span class="ri ri-check-double-line" style="margin-right: 150px;"></span> <span style="font-weight: bold;">4. 학습이 종료된 후 다운로드 버튼을 클릭하여 TTF파일을 다운로드하여 사용합니다.</span>
+              </li>
+            </ul>
+            
+            
+            
+            
+        </div>
+          <button class="btn-download" onclick="downloadFiles()">템플릿 다운로드</button>
+
+          <script>
+              function downloadFiles() {
+                  const files = [
+                      '/template/template1.jpg',
+                      '/template/template2.jpg',
+                      '/template/template3.jpg'
+                  ];
+          
+                  files.forEach(file => {
+                      const link = document.createElement('a');
+                      link.href = file;
+                      link.download = file.split('/').pop(); // 파일 이름을 추출하여 설정
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
+                  });
+              }
+          </script>
+
+        </div>
+      </div>
+    </section><!-- End About Section -->
+    
+
+  </main>
+
 </body>
+
 </html>
